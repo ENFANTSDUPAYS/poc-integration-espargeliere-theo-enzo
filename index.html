@@ -38,42 +38,64 @@
   <!-- ========== NAVBAR ========== -->
   <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#" class="flex items-center gap-1.5">
-          <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M12 2v20M8 6v12M4 10v4M16 6v12M20 10v4" stroke-linecap="round"/>
-          </svg>
-          <span class="text-xl font-extrabold text-gray-900">TalkNotes</span>
+      <div class="flex items-center justify-between h-[72px]">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center">
+          <img src="images/logo.svg" alt="TalkNotes" class="h-8" />
         </a>
-        <div class="hidden md:flex items-center gap-8 text-base font-medium text-gray-500">
+
+        <!-- Liens de navigation (Desktop) -->
+        <div class="hidden md:flex items-center gap-8 text-[15px] font-medium text-gray-500">
           <a href="#try-it" class="hover:text-primary transition">Try it</a>
           <a href="#how-it-works" class="hover:text-primary transition">How it works</a>
           <a href="#use-cases" class="hover:text-primary transition">Use cases</a>
           <a href="#pricing" class="hover:text-primary transition">Pricing</a>
           <a href="#faq" class="hover:text-primary transition">FAQ</a>
         </div>
+
+        <!-- Boutons d'action -->
         <div class="flex items-center gap-4">
-          <a href="login.html" class="hidden sm:inline-block text-sm font-bold bg-indigo-50 text-indigo-600 px-4 py-2 rounded-[6px] hover:bg-indigo-100 transition">Login</a>
-          <!-- Ajout de la classe open-popup-btn ici -->
-          <button class="open-popup-btn bg-dark text-white text-sm font-bold px-5 py-2.5 rounded-[6px] bg-indigo-600 flex items-center gap-1.5 hover:bg-indigo-700 transition">
+          <!-- Login (Desktop uniquement) -->
+          <a href="login.html" class="hidden md:inline-flex items-center justify-center text-sm font-bold bg-indigo-50 text-indigo-600 px-5 py-2.5 rounded-md hover:bg-indigo-100 transition">
+            Login
+          </a>
+          
+          <!-- Get Talknotes + (Desktop uniquement) -->
+          <button class="open-popup-btn hidden md:inline-flex items-center justify-center gap-1.5 bg-indigo-600 text-white text-sm font-bold px-5 py-2.5 rounded-md hover:bg-indigo-700 transition">
             &rarr; Get Talknotes +
           </button>
-          <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+
+          <!-- Bouton Menu (Mobile uniquement) -->
+          <button id="mobile-menu-btn" class="md:hidden flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-md text-gray-700 hover:bg-gray-50 transition font-medium text-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
+            Menu
           </button>
         </div>
+
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4 pt-2 space-y-2">
-      <a href="#try-it" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Try it</a>
-      <a href="#how-it-works" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">How it works</a>
-      <a href="#use-cases" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Use cases</a>
-      <a href="#pricing" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Pricing</a>
-      <a href="#faq" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">FAQ</a>
-      <a href="login.html" class="block py-2 text-sm font-bold">Login</a>
-      <button class="open-popup-btn w-full mt-2 bg-indigo-600 text-white text-sm font-bold px-5 py-2.5 rounded-[6px]">Get Talknotes +</button>
+
+    <!-- Menu déroulant (Mobile) -->
+    <div id="mobile-menu" class="hidden md:hidden absolute left-0 w-full border-b border-gray-100 bg-white px-4 pb-6 pt-2 shadow-lg">
+      <div class="space-y-1">
+        <a href="#try-it" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">Try it</a>
+        <a href="#how-it-works" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">How it works</a>
+        <a href="#use-cases" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">Use cases</a>
+        <a href="#pricing" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">Pricing</a>
+        <a href="#faq" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">FAQ</a>
+      </div>
+      
+      <div class="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3">
+        <a href="login.html" class="flex items-center justify-center text-[15px] font-bold bg-indigo-50 text-indigo-600 px-5 py-3 rounded-md hover:bg-indigo-100 transition">
+          Login
+        </a>
+        <button class="open-popup-btn w-full bg-indigo-600 text-white text-[15px] font-bold px-5 py-3 rounded-md hover:bg-indigo-700 transition">
+          Get Talknotes +
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -772,9 +794,9 @@
 
   <!-- ========== FOOTER ========== -->
   <footer class="bg-[#0b1326] text-[#8892a5] py-14 font-heading">
-    <div class="w-full px-6 lg:px-10">
-      <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
-        <div class="lg:w-[280px] lg:shrink-0 lg:self-start">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between text-center lg:text-left">
+        <div class="lg:w-[280px] lg:shrink-0 lg:self-start flex flex-col items-center lg:items-start">
           <a href="#" class="mb-4 inline-flex items-center gap-2">
             <img src="./images/icon.png" alt="TalkNotes icon" class="h-10 w-10 object-contain" />
             <span class="text-[24px] font-semibold text-white leading-none">TalkNotes</span>
@@ -782,7 +804,7 @@
           <p class="mt-2 text-[14px] leading-6 text-[#73819a]">Turn your thoughts into actionable notes.</p>
           <p class="mt-4 text-[12px] text-[#5f6b81]">&copy; 2024 - talknotes.io. All rights reserved.</p>
 
-          <div class="mt-5 flex items-center gap-12 text-[#717f98]">
+          <div class="mt-5 flex items-center justify-center lg:justify-start gap-6 text-[#717f98]">
             <a href="#" aria-label="Twitter" class="hover:text-white transition"><i class="bi bi-twitter-x text-[16px]"></i></a>
             <a href="#" aria-label="Facebook" class="hover:text-white transition"><i class="bi bi-facebook text-[16px]"></i></a>
             <a href="#" aria-label="YouTube" class="hover:text-white transition"><i class="bi bi-youtube text-[16px]"></i></a>
@@ -790,8 +812,8 @@
           </div>
         </div>
 
-        <div class="lg:ml-auto lg:w-[760px] lg:pr-12">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-20">
+        <div class="flex-1 lg:pl-12 xl:pl-24">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-8">
           <div class="w-full">
             <h4 class="text-[16px] font-medium uppercase tracking-[0.06em] text-white/95">Use Cases</h4>
             <ul class="mt-4 space-y-3 text-[14px]">
