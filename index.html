@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="./images/icon.png" />
   <title>TalkNotes - The #1 AI voice note app</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/script.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -36,40 +38,64 @@
   <!-- ========== NAVBAR ========== -->
   <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#" class="flex items-center gap-1.5">
-          <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path class="fill-black" d="M12 2v20M8 6v12M4 10v4M16 6v12M20 10v4" stroke-linecap="round"/>
-          </svg>
-          <span class="text-xl font-extrabold text-gray-900">TalkNotes</span>
+      <div class="flex items-center justify-between h-[72px]">
+        
+        <!-- Logo -->
+        <a href="#" class="flex items-center">
+          <img src="images/logo.svg" alt="TalkNotes" class="h-8" />
         </a>
-        <div class="hidden md:flex items-center gap-8 text-base font-medium text-gray-500">
+
+        <!-- Liens de navigation (Desktop) -->
+        <div class="hidden md:flex items-center gap-8 text-[15px] font-medium text-gray-500">
           <a href="#try-it" class="hover:text-primary transition">Try it</a>
           <a href="#how-it-works" class="hover:text-primary transition">How it works</a>
           <a href="#use-cases" class="hover:text-primary transition">Use cases</a>
           <a href="#pricing" class="hover:text-primary transition">Pricing</a>
           <a href="#faq" class="hover:text-primary transition">FAQ</a>
         </div>
+
+        <!-- Boutons d'action -->
         <div class="flex items-center gap-4">
-          <a href="#" class="hidden sm:inline-block text-sm font-bold bg-indigo-50 text-indigo-600 px-4 py-2 rounded-[6px] hover:bg-indigo-100 transition">Login</a>
-          <a href="#" class="bg-dark text-white text-sm font-bold px-5 py-2.5 rounded-[6px] bg-indigo-600 flex items-center gap-1.5">
-            &rarr; Get Talknotes +
+          <!-- Login (Desktop uniquement) -->
+          <a href="login.html" class="hidden md:inline-flex items-center justify-center text-sm font-bold bg-indigo-50 text-indigo-600 px-5 py-2.5 rounded-md hover:bg-indigo-100 transition">
+            Login
           </a>
-          <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path class="fill-black" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+          
+          <!-- Get Talknotes + (Desktop uniquement) -->
+          <button class="open-popup-btn hidden md:inline-flex items-center justify-center gap-1.5 bg-indigo-600 text-white text-sm font-bold px-5 py-2.5 rounded-md hover:bg-indigo-700 transition">
+            &rarr; Get Talknotes +
+          </button>
+
+          <!-- Bouton Menu (Mobile uniquement) -->
+          <button id="mobile-menu-btn" class="md:hidden flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-md text-gray-700 hover:bg-gray-50 transition font-medium text-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
+            Menu
           </button>
         </div>
+
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4 pt-2 space-y-2">
-      <a href="#try-it" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Try it</a>
-      <a href="#how-it-works" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">How it works</a>
-      <a href="#use-cases" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Use cases</a>
-      <a href="#pricing" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Pricing</a>
-      <a href="#faq" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">FAQ</a>
-      <a href="#" class="block py-2 text-sm font-bold">Login</a>
+
+    <!-- Menu déroulant (Mobile) -->
+    <div id="mobile-menu" class="hidden md:hidden absolute left-0 w-full border-b border-gray-100 bg-white px-4 pb-6 pt-2 shadow-lg">
+      <div class="space-y-1">
+        <a href="#try-it" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">Try it</a>
+        <a href="#how-it-works" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">How it works</a>
+        <a href="#use-cases" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">Use cases</a>
+        <a href="#pricing" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">Pricing</a>
+        <a href="#faq" class="block py-3 text-[15px] font-medium text-gray-600 hover:text-primary">FAQ</a>
+      </div>
+      
+      <div class="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3">
+        <a href="login.html" class="flex items-center justify-center text-[15px] font-bold bg-indigo-50 text-indigo-600 px-5 py-3 rounded-md hover:bg-indigo-100 transition">
+          Login
+        </a>
+        <button class="open-popup-btn w-full bg-indigo-600 text-white text-[15px] font-bold px-5 py-3 rounded-md hover:bg-indigo-700 transition">
+          Get Talknotes +
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -107,7 +133,7 @@
           </div>
 
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4">
-            <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-[6px] text-base hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+            <a href="#pricing" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-[6px] text-base hover:opacity-90 transition shadow-lg shadow-purple-300/30">
               &rarr; Try TalkNotes free for 7 days
             </a>
             <a href="#try-it" class="text-sm font-medium bg-indigo-50 text-indigo-600 px-4 py-2 rounded-[6px] hover:bg-indigo-100 transition">Try the free demo</a>
@@ -242,7 +268,7 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+        <a href="#pricing" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
           &rarr; Try TalkNotes free for 7 days
         </a>
       </div>
@@ -301,7 +327,7 @@
       </div>
 
       <div class="text-center mt-14">
-        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+        <a href="#pricing" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
           &rarr; Try TalkNotes free for 7 days
         </a>
       </div>
@@ -364,7 +390,7 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+        <a href="#pricing" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
           &rarr; Try TalkNotes free for 7 days
         </a>
       </div>
@@ -522,7 +548,7 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+        <a href="#pricing" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
           &rarr; Try TalkNotes free for 7 days
         </a>
       </div>
@@ -546,20 +572,20 @@
   <!-- ========== PRICING ========== -->
   <section id="pricing" class="py-20 bg-[#f0f2fa]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <p class="text-center text-[#9ca3af] text-[30px] font-medium">Pricing</p>
-      <h2 class="font-heading text-center text-[#374151] text-[48px] font-semibold mt-2">
+      <p class="text-center text-[#9ca3af] text-[14px] sm:text-[18px] font-medium">Pricing</p>
+      <h2 class="font-heading text-center text-[#374151] text-[22px] sm:text-[32px] font-semibold mt-2">
         Start Your 7 Day Free Trial
       </h2>
-      <p class="text-center text-[#6b7280] text-[19px] mt-4">
+      <p class="text-center text-[#6b7280] text-[12px] sm:text-[14px] mt-4">
         Get TalkNotes: <span class="text-[#4db86a] font-semibold">ALL FEATURES</span>
       </p>
 
       <div class="mt-10 grid md:grid-cols-2 gap-6">
-        <div class="bg-white rounded-xl border border-[#e5e7eb] shadow-sm p-6">
-          <h3 class="font-heading text-[36px] font-semibold text-[#111827]">Monthly</h3>
-          <p class="text-[16px] text-[#9ca3af] mt-1">Try 7 days free then $19.97/month</p>
-          <p class="mt-5 text-[56px] font-bold text-black leading-none">$19.97<span class="text-[22px] text-[#9ca3af] font-semibold">/month</span></p>
-          <ul class="mt-6 space-y-2.5 text-[22px] text-[#374151]">
+        <div class="bg-white rounded-xl border border-[#e5e7eb] shadow-sm p-8">
+          <h3 class="font-heading text-[18px] sm:text-[22px] font-semibold text-[#111827]">Monthly</h3>
+          <p class="text-[12px] sm:text-[13px] text-[#9ca3af] mt-1">Try 7 days free then $19.97/month</p>
+          <p class="mt-5 text-[26px] sm:text-[38px] font-bold text-black leading-none">$19.97<span class="text-[12px] sm:text-[16px] text-[#9ca3af] font-semibold">/month</span></p>
+          <ul class="mt-6 space-y-2.5 text-[12px] sm:text-[14px] text-black">
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> iOS and Android app</li>
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Unlimited notes</li>
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> 2h recording</li>
@@ -568,18 +594,18 @@
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Export to text, mail, URL etc</li>
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Store and organize your notes</li>
           </ul>
-          <a href="#" class="mt-6 flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[27px] font-semibold py-3">
+          <a href="#" class="mt-6 flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[14px] sm:text-[20px] font-semibold py-3">
             <span aria-hidden="true">→</span> Try 7 Days Free
           </a>
-          <p class="text-center text-[14px] text-[#9ca3af] mt-2">🔒 Secure payment</p>
+          <p class="text-center text-[10px] sm:text-[11px] text-[#9ca3af] mt-2">🔒 Secure payment</p>
         </div>
 
-        <div class="bg-white rounded-xl border-2 border-[#5b5ce6] shadow-sm p-6 relative">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#4f46e5] px-4 py-1 text-[13px] font-semibold text-white">BEST VALUE</div>
-          <h3 class="font-heading text-[36px] font-semibold text-[#111827]">Yearly</h3>
-          <p class="text-[16px] text-[#9ca3af] mt-1">Try 7 days free then $16/month</p>
-          <p class="mt-5 text-[56px] font-bold text-black leading-none">$197<span class="text-[22px] text-[#9ca3af] font-semibold">/year</span></p>
-          <ul class="mt-6 space-y-2.5 text-[22px] text-[#374151]">
+        <div class="bg-white rounded-xl border-2 border-[#5b5ce6] shadow-sm p-8 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#4f46e5] px-4 py-1 text-[10px] sm:text-[11px] font-semibold text-white">BEST VALUE</div>
+          <h3 class="font-heading text-[18px] sm:text-[22px] font-semibold text-[#111827]">Yearly</h3>
+          <p class="text-[12px] sm:text-[13px] text-[#9ca3af] mt-1">Try 7 days free then $16/month</p>
+          <p class="mt-5 text-[26px] sm:text-[38px] font-bold text-black leading-none">$197<span class="text-[12px] sm:text-[16px] text-[#9ca3af] font-semibold">/year</span></p>
+          <ul class="mt-6 space-y-2.5 text-[12px] sm:text-[14px] text-black">
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> iOS and Android app</li>
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Unlimited notes</li>
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> 2h recording</li>
@@ -588,37 +614,37 @@
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Export to text, mail, URL etc</li>
             <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Store and organize your notes</li>
           </ul>
-          <a href="#" class="mt-6 flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[27px] font-semibold py-3">
+          <a href="#" class="mt-6 flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[18px] sm:text-[23px] font-semibold py-3">
             <span aria-hidden="true">→</span> Try 7 Days Free
           </a>
-          <p class="text-center text-[14px] text-[#9ca3af] mt-2">🔒 Secure payment</p>
+          <p class="text-center text-[12px] sm:text-[13px] text-[#9ca3af] mt-2">🔒 Secure payment</p>
         </div>
       </div>
 
-      <p class="mt-5 text-center text-[20px] text-[#4b5563]">
+      <p class="mt-5 text-center text-[12px] sm:text-[14px] text-[#4b5563]">
         Trusted by +10,000 happy users <span class="text-[#f59e0b]">★★★★★</span>
       </p>
 
       <div class="mt-6 flex flex-wrap justify-center items-center gap-10 text-[#8b9098]">
-        <span class="text-[48px] font-semibold">◉◉Medium</span>
-        <span class="text-[34px] font-semibold">IH INDIE HACKERS</span>
-        <span class="text-[52px] font-semibold">⫸ Foundr</span>
-        <span class="text-[48px] font-semibold">Scoop.<span class="bg-[#8b9098] text-[#f0f2fa] px-1 rounded-sm">it!</span></span>
+        <span class="text-[32px] font-semibold">◉◉Medium</span>
+        <span class="text-[24px] font-semibold">IH INDIE HACKERS</span>
+        <span class="text-[36px] font-semibold">⫸ Foundr</span>
+        <span class="text-[32px] font-semibold">Scoop.<span class="bg-[#8b9098] text-[#f0f2fa] px-1 rounded-sm">it!</span></span>
       </div>
 
       <div class="mt-12 max-w-2xl mx-auto space-y-8">
         <blockquote class="flex items-start gap-4">
           <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=80&h=80&fit=crop" alt="avatar" class="h-11 w-11 rounded-full object-cover" />
           <div>
-            <p class="text-[14px] leading-6 text-[#4b5563]">“a perfect tool to work in different ways, if its notes, brainstorming, translation - I love it!”</p>
-            <p class="text-[13px] text-[#9ca3af] mt-1">- Tanja Res, reviewed on Trustpilot</p>
+            <p class="text-[11px] sm:text-[12px] leading-6 text-[#4b5563]">"a perfect tool to work in different ways, if its notes, brainstorming, translation - I love it!"</p>
+            <p class="text-[10px] sm:text-[11px] text-[#9ca3af] mt-1">- Tanja Res, reviewed on Trustpilot</p>
           </div>
         </blockquote>
         <blockquote class="flex items-start gap-4">
           <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=80&h=80&fit=crop" alt="avatar" class="h-11 w-11 rounded-full object-cover" />
           <div>
-            <p class="text-[14px] leading-6 text-[#4b5563]">“Been using it for the last 2 months. Super easy. Saves me 5 hours every week minimum.”</p>
-            <p class="text-[13px] text-[#9ca3af] mt-1">- Dan Kulkov, Entrepreneur</p>
+            <p class="text-[11px] sm:text-[12px] leading-6 text-[#4b5563]">"Been using it for the last 2 months. Super easy. Saves me 5 hours every week minimum."</p>
+            <p class="text-[10px] sm:text-[11px] text-[#9ca3af] mt-1">- Dan Kulkov, Entrepreneur</p>
           </div>
         </blockquote>
       </div>
@@ -741,7 +767,7 @@
       </div>
 
       <div class="text-center mt-10 mb-14">
-        <a href="#" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[14px] font-semibold px-6 py-2.5 rounded-md hover:opacity-95 transition shadow-md">
+        <a href="#pricing" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[14px] font-semibold px-6 py-2.5 rounded-md hover:opacity-95 transition shadow-md">
           <span aria-hidden="true">&rarr;</span> Try TalkNotes free for 7 days
         </a>
       </div>
@@ -760,10 +786,11 @@
             <p class="text-[12px] leading-5 text-[#d7dcff] mb-4">
               Turn your ideas into organized, actionable insights-no manual work required. Capture your thoughts and let TalkNotes transform them into the formats you need to stay productive and on top of your work.
             </p>
-            <a href="#" class="flex w-full items-center justify-center gap-2 bg-[#ea4f8e] hover:bg-[#e13f83] text-white text-[14px] font-semibold px-5 py-2 rounded-sm transition">
+            <!-- Ajout de la classe open-popup-btn ici -->
+            <button class="open-popup-btn flex w-full items-center justify-center gap-2 bg-[#ea4f8e] hover:bg-[#e13f83] text-white text-[14px] font-semibold px-5 py-2 rounded-sm transition">
               <span aria-hidden="true" class="text-[18px] leading-none">⟶</span>
               Get Talknotes +
-            </a>
+            </button>
           </div>
           <div class="hidden p-3 md:block">
             <img src="./images/faq.jpg" alt="FAQ illustration" class="h-full w-full rounded-sm object-cover" />
@@ -775,9 +802,9 @@
 
   <!-- ========== FOOTER ========== -->
   <footer class="bg-[#0b1326] text-[#8892a5] py-14 font-heading">
-    <div class="w-full px-6 lg:px-10">
-      <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
-        <div class="lg:w-[280px] lg:shrink-0 lg:self-start">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between text-center lg:text-left">
+        <div class="lg:w-[280px] lg:shrink-0 lg:self-start flex flex-col items-center lg:items-start">
           <a href="#" class="mb-4 inline-flex items-center gap-2">
             <img src="./images/icon.png" alt="TalkNotes icon" class="h-10 w-10 object-contain" />
             <span class="text-[24px] font-semibold text-white leading-none">TalkNotes</span>
@@ -785,7 +812,7 @@
           <p class="mt-2 text-[14px] leading-6 text-[#73819a]">Turn your thoughts into actionable notes.</p>
           <p class="mt-4 text-[12px] text-[#5f6b81]">&copy; 2024 - talknotes.io. All rights reserved.</p>
 
-          <div class="mt-5 flex items-center gap-12 text-[#717f98]">
+          <div class="mt-5 flex items-center justify-center lg:justify-start gap-6 text-[#717f98]">
             <a href="#" aria-label="Twitter" class="hover:text-white transition"><i class="bi bi-twitter-x text-[16px]"></i></a>
             <a href="#" aria-label="Facebook" class="hover:text-white transition"><i class="bi bi-facebook text-[16px]"></i></a>
             <a href="#" aria-label="YouTube" class="hover:text-white transition"><i class="bi bi-youtube text-[16px]"></i></a>
@@ -793,8 +820,8 @@
           </div>
         </div>
 
-        <div class="lg:ml-auto lg:w-[760px] lg:pr-12">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-20">
+        <div class="flex-1 lg:pl-12 xl:pl-24">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-8">
           <div class="w-full">
             <h4 class="text-[16px] font-medium uppercase tracking-[0.06em] text-white/95">Use Cases</h4>
             <ul class="mt-4 space-y-3 text-[14px]">
@@ -846,32 +873,122 @@
     </div>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
-  <script>
-    function toggleFaq(btn) {
-      const content = btn.nextElementSibling;
-      const icon = btn.querySelector('i');
-      const isOpen = content.classList.contains('open');
+  <!-- ========== POPUP OVERLAY ========== -->
+  <div id="talknotes-popup" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <!-- Fond assombri (Backdrop) -->
+    <div id="popup-backdrop" aria-hidden="true" class="absolute inset-0 bg-black/20 backdrop-blur-[1px] cursor-pointer"></div>
 
-      document.querySelectorAll('.faq-content.open').forEach(c => {
-        c.classList.remove('open');
-        c.style.maxHeight = '0px';
-      });
-      document.querySelectorAll('#faq button[onclick="toggleFaq(this)"] i').forEach(s => {
-        s.style.transform = '';
-      });
+    <!-- Contenu de la Popup -->
+    <article
+      class="relative z-10 w-full max-w-[560px] rounded-xl bg-white px-8 pb-6 pt-3 shadow-[0_14px_40px_rgba(17,24,39,0.16)] flex flex-col max-h-[90vh]"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="popup-title"
+    >
+      <button
+        id="close-popup"
+        type="button"
+        aria-label="Fermer"
+        class="absolute right-2 top-2 inline-flex h-8 w-8 items-center justify-center rounded-md text-[#4b5563] transition hover:bg-[#f3f4f6]"
+      >
+        <i class="bi bi-x text-[28px] font-extrabold leading-none"></i>
+      </button>
 
-      if (!isOpen) {
-        content.classList.add('open');
-        content.style.maxHeight = content.scrollHeight + 'px';
-        icon.style.transform = 'rotate(180deg)';
-      }
-    }
+      <header class="mt-8 mb-4 text-center shrink-0">
+        <h1
+          id="popup-title"
+          class="bg-gradient-to-r from-[#ff0a8a] to-[#8f00ff] bg-clip-text text-[28px] font-bold leading-[1.08] tracking-[-0.02em] text-transparent"
+        >
+          Unlock TalkNotes Plus
+        </h1>
+        <p class="mt-2 text-[14px] font-medium leading-tight text-[#9ca3af]">Get unlimited TalkNotes</p>
+      </header>
 
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
-  </script>
+      <div class="mb-4 h-px w-full bg-[#eceef2] shrink-0"></div>
+
+      <!-- Zone de liste avec Scroll -->
+      <div class="overflow-y-auto pr-2 custom-scrollbar flex-grow">
+        <ul class="space-y-6">
+          <li class="flex items-start gap-4">
+            <i class="bi bi-infinity mt-1 text-[22px] text-[#6366f1]"></i>
+            <div>
+              <h2 class="text-[18px] font-semibold leading-none text-[#1f2937]">Unlimited Notes</h2>
+              <p class="mt-1 text-[14px] font-medium leading-[1.4] text-[#6b7280]">
+                Create as many notes as you want, and get up to 2 hours of recording time per note.
+              </p>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-4">
+            <i class="bi bi-palette-fill mt-1 text-[20px] text-[#6366f1]"></i>
+            <div>
+              <h2 class="text-[18px] font-semibold leading-none text-[#1f2937]">Improved styling</h2>
+              <p class="mt-1 text-[14px] font-medium leading-[1.4] text-[#6b7280]">
+                Unlock more styles, create your own styles prompts and more!.
+              </p>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-4">
+            <i class="bi bi-upload mt-1 text-[20px] text-[#6366f1]"></i>
+            <div>
+              <h2 class="text-[18px] font-semibold leading-none text-[#1f2937]">File upload</h2>
+              <p class="mt-1 text-[14px] font-medium leading-[1.4] text-[#6b7280]">
+                Create notes from your own audio files. Multiple formats supported!
+              </p>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-4">
+            <i class="bi bi-tag-fill mt-1 text-[20px] text-[#6366f1]"></i>
+            <div>
+              <h2 class="text-[18px] font-semibold leading-none text-[#1f2937]">Organize Your Notes</h2>
+              <p class="mt-1 text-[14px] font-medium leading-[1.4] text-[#6b7280]">
+                Sort and filter your notes with ease by adding custom tags.
+              </p>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-4">
+            <i class="bi bi-bezier2 mt-1 text-[20px] text-[#6366f1]"></i>
+            <div>
+              <h2 class="text-[18px] font-semibold leading-none text-[#1f2937]">Integrations</h2>
+              <p class="mt-1 text-[14px] font-medium leading-[1.4] text-[#6b7280]">
+                Connect Talknotes &amp; Zapier to send your notes anywhere you want!
+              </p>
+            </div>
+          </li>
+
+          <li class="flex items-start gap-4">
+            <i class="bi bi-three-dots mt-1 text-[20px] text-[#6366f1]"></i>
+            <div>
+              <h2 class="text-[18px] font-semibold leading-none text-[#1f2937]">WhatsApp Transcriber</h2>
+              <p class="mt-1 text-[14px] font-medium leading-[1.4] text-[#6b7280]">
+                Transcribe WhatsApp voice messages to text directly in WhatsApp with out bot!
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="my-4 h-px w-full bg-[#eceef2] shrink-0"></div>
+
+      <div class="shrink-0">
+        <button
+          type="button"
+          class="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#ff0a8a] to-[#8f00ff] text-[16px] font-medium text-white shadow-[0_8px_18px_rgba(203,28,255,0.34)] transition hover:brightness-105"
+        >
+          <i class="bi bi-stars text-[16px]"></i>
+          Get Talknotes +
+        </button>
+
+        <p class="mt-3 flex items-center justify-center gap-2 text-[14px] text-[#818a98]">
+          <i class="bi bi-shield-fill-check text-[17px]"></i>
+          Trusted by +10,000 happy users
+        </p>
+      </div>
+    </article>
+  </div>
 
 </body>
 </html>
