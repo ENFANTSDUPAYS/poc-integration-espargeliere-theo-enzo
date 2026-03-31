@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalkNotes - The #1 AI voice note app</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4F46E5',
+            'primary-dark': '#8000CC',
+            accent: '#FF006F',
+            'accent-pink': '#FF00AC',
+            'accent-yellow': '#FFE207',
+            dark: '#1E1B4B',
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            heading: ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body class="bg-white text-gray-500 antialiased">
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-1.5">
+          <svg class="w-7 h-7 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2v20M8 6v12M4 10v4M16 6v12M20 10v4" stroke-linecap="round"/>
+          </svg>
+          <span class="text-xl font-extrabold text-gray-900">TalkNotes</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-base font-medium text-gray-500">
+          <a href="#try-it" class="hover:text-primary transition">Try it</a>
+          <a href="#how-it-works" class="hover:text-primary transition">How it works</a>
+          <a href="#use-cases" class="hover:text-primary transition">Use cases</a>
+          <a href="#pricing" class="hover:text-primary transition">Pricing</a>
+          <a href="#faq" class="hover:text-primary transition">FAQ</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hidden sm:inline-block text-sm font-bold bg-indigo-50 text-indigo-600 px-4 py-2 rounded-[6px] hover:bg-indigo-100 transition">Login</a>
+          <a href="#" class="bg-dark text-white text-sm font-bold px-5 py-2.5 rounded-[6px] bg-indigo-600 flex items-center gap-1.5">
+            &rarr; Get Talknotes +
+          </a>
+          <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-primary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white px-4 pb-4 pt-2 space-y-2">
+      <a href="#try-it" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Try it</a>
+      <a href="#how-it-works" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">How it works</a>
+      <a href="#use-cases" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Use cases</a>
+      <a href="#pricing" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">Pricing</a>
+      <a href="#faq" class="block py-2 text-sm font-medium text-gray-600 hover:text-primary">FAQ</a>
+      <a href="#" class="block py-2 text-sm font-bold">Login</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="try-it" class="pattern-bg overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div class="flex-1 max-w-xl">
+          <!-- Product Hunt badge -->
+          <img src="images/ph-award.svg" alt="Product of the day - 1st" class="h-9 mb-6">
+
+          <h1 class="font-heading text-4xl sm:text-5xl font-semibold text-black leading-tight">
+            Never Take Notes Again,<br>
+            <span class="text-indigo-600">There's an AI for that</span>.
+          </h1>
+
+          <h2 class="font-heading text-xl font-semibold gradient-text mt-5 mb-4 inline-block">
+            Try TalkNotes free for 7 days
+          </h2>
+
+          <p class="text-gray-500 leading-relaxed mb-4 max-w-md">
+            Join thousands of professionals who use AI voice transcription and note-taking to save time, impress colleagues and clients with organized notes while working smarter, not harder.
+          </p>
+
+          <p class="text-sm text-gray-400 mb-4">Available on Web, iOS and Android.</p>
+
+          <div class="flex flex-wrap items-center gap-2 mb-6">
+            <span class="text-sm text-gray-500 font-medium">Works in:</span>
+            <span class="text-xs font-bold bg-indigo-50 rounded-full px-3 py-1 text-indigo-600">🇺🇸 English</span>
+            <span class="text-xs font-bold bg-indigo-50 rounded-full px-3 py-1 text-indigo-600">🇪🇸 Spanish</span>
+            <span class="text-xs font-bold bg-indigo-50 rounded-full px-3 py-1 text-indigo-600">🇫🇷 French</span>
+            <span class="text-xs font-bold bg-indigo-50 rounded-full px-3 py-1 text-indigo-600">🇩🇪 German</span>
+            <span class="text-xs font-bold bg-indigo-50 rounded-full px-3 py-1 text-indigo-600">🇳🇱 Dutch</span>
+            <span class="text-xs font-bold bg-indigo-50 rounded-full px-3 py-1 text-indigo-600">🇵🇹 Portugu...</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-4">
+            <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-[6px] text-base hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+              &rarr; Try TalkNotes free for 7 days
+            </a>
+            <a href="#try-it" class="text-sm font-medium bg-indigo-50 text-indigo-600 px-4 py-2 rounded-[6px] hover:bg-indigo-100 transition">Try the free demo</a>
+          </div>
+
+          <p class="text-sm text-gray-400 flex items-center gap-1 mb-5">
+            Trusted by +10,000 happy users
+            <span class="text-yellow-400">★★★★★</span>
+          </p>
+
+          <div class="flex items-center gap-3">
+            <a href="#" class="hover:opacity-80 transition">
+              <img src="images/appstore.png" alt="Download on the App Store" class="h-10">
+            </a>
+            <a href="#" class="hover:opacity-80 transition">
+              <img src="images/googleplay.png" alt="GET IT ON Google Play" class="h-10">
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive demo -->
+        <div class="flex-1 max-w-md w-full">
+          <div class="demo-card relative flex flex-col rounded-xl bg-white p-6 shadow-md h-[525px] w-[400px] max-w-full">
+            <h3 class="font-heading text-center mb-4 font-medium text-gray-700">Interactive demo</h3>
+
+            <div class="flex flex-col items-center gap-3 flex-1">
+              <div class="flex flex-col items-center justify-center flex-1">
+                <div class="mb-6 max-w-[250px] w-full h-[75px] rounded-xl bg-gray-50"></div>
+
+                <div class="mb-6 text-center">
+                  <div class="mb-1 text-xs font-medium text-gray-400">Limit: 01:00</div>
+                  <div class="text-3xl font-semibold text-gray-900">00:00</div>
+                </div>
+
+                <div class="flex items-center gap-5">
+                  <button class="w-14 h-14 rounded-full bg-indigo-500 flex items-center justify-center text-white p-4 opacity-50" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.84A1.5 1.5 0 0 0 4 4.11v11.78a1.5 1.5 0 0 0 2.3 1.27l9.344-5.891a1.5 1.5 0 0 0 0-2.538z"/></svg>
+                  </button>
+                  <button class="w-24 h-24 rounded-full gradient-cta flex items-center justify-center text-white p-6 pulse-mic hover:scale-105 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="currentColor" viewBox="0 0 20 20"><g><path d="M7 4a3 3 0 0 1 6 0v6a3 3 0 1 1-6 0z"/><path d="M5.5 9.643a.75.75 0 0 0-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5h-1.5v-1.546A6 6 0 0 0 16 10v-.357a.75.75 0 0 0-1.5 0V10a4.5 4.5 0 0 1-9 0z"/></g></svg>
+                  </button>
+                  <button class="w-14 h-14 rounded-full bg-indigo-500 flex items-center justify-center text-white p-4 opacity-50" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M5 3.25V4H2.75a.75.75 0 0 0 0 1.5h.3l.815 8.15A1.5 1.5 0 0 0 5.357 15h5.286a1.5 1.5 0 0 0 1.492-1.35l.815-8.15h.3a.75.75 0 0 0 0-1.5H11v-.75A2.25 2.25 0 0 0 8.75 1h-1.5A2.25 2.25 0 0 0 5 3.25m2.25-.75a.75.75 0 0 0-.75.75V4h3v-.75a.75.75 0 0 0-.75-.75zM6.05 6a.75.75 0 0 1 .787.713l.275 5.5a.75.75 0 0 1-1.498.075l-.275-5.5A.75.75 0 0 1 6.05 6m3.9 0a.75.75 0 0 1 .712.787l-.275 5.5a.75.75 0 0 1-1.498-.075l.275-5.5a.75.75 0 0 1 .786-.711" clip-rule="evenodd"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <button class="inline-flex items-center justify-center gap-2 bg-indigo-600 text-white font-medium px-8 py-2 rounded-[6px] mt-7 opacity-50" disabled>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8" clip-rule="evenodd"/></svg>
+                Continue
+              </button>
+
+              <p class="text-center text-sm font-medium text-gray-400">
+                <span class="animate-bounce inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="inline w-3.5 h-3.5" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 14a.75.75 0 0 1-.75-.75V4.56L4.03 7.78a.75.75 0 0 1-1.06-1.06l4.5-4.5a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1-1.06 1.06L8.75 4.56v8.69A.75.75 0 0 1 8 14" clip-rule="evenodd"/></svg></span>
+                Try it out! Click the
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline w-3.5 h-3.5 animate-pulse text-indigo-600" fill="currentColor" viewBox="0 0 16 16"><path d="M8 1a2 2 0 0 0-2 2v4a2 2 0 1 0 4 0V3a2 2 0 0 0-2-2"/><path d="M4.5 7A.75.75 0 0 0 3 7a5 5 0 0 0 4.25 4.944V13.5h-1.5a.75.75 0 0 0 0 1.5h4.5a.75.75 0 0 0 0-1.5h-1.5v-1.556A5 5 0 0 0 13 7a.75.75 0 0 0-1.5 0a3.5 3.5 0 1 1-7 0"/></svg>
+                to start recording
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOGOS ========== -->
+  <section class="py-12 border-t border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 flex flex-wrap items-center justify-center gap-10 opacity-40">
+      <span class="text-2xl font-bold tracking-tight">
+        <span class="inline-flex items-center gap-1">
+          <span class="w-3 h-3 bg-gray-900 rounded-full"></span>
+          <span class="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Medium
+        </span>
+      </span>
+      <span class="text-lg font-bold tracking-tight">
+        <span class="inline-flex items-center gap-1">
+          <span class="bg-gray-900 text-white text-xs font-bold px-1.5 py-0.5 rounded">H</span>
+          INDIE HACKERS
+        </span>
+      </span>
+      <span class="text-2xl font-bold tracking-tight flex items-center gap-1">
+        <span class="text-gray-900">▶</span> Foundr
+      </span>
+      <span class="text-2xl font-bold tracking-tight">
+        Scoop.<span class="bg-green-500 text-white text-sm px-1.5 py-0.5 rounded font-bold">it!</span>
+      </span>
+    </div>
+  </section>
+
+  <!-- ========== CHEVRON ========== -->
+  <div class="text-center py-6">
+    <svg class="w-8 h-8 mx-auto text-gray-300 animate-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+
+  <!-- ========== WHY CHOOSE TALKNOTES ========== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-gray-400 text-center mb-2">Why Choose TalkNotes?</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-center text-black mb-14">
+        Work with AI by Your Side, Every Step of the Way
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="feature-card bg-[#f4f6fa] rounded-2xl p-7">
+          <h3 class="font-heading font-semibold text-lg text-gray-800 mb-2"><span class="text-xl mr-1">🕐</span> Save Time</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Focus on what matters. Let AI handle the busywork of organizing your notes so you can reclaim your time and dedicate it to high-impact tasks.</p>
+        </div>
+        <div class="feature-card bg-[#f4f6fa] rounded-2xl p-7">
+          <h3 class="font-heading font-semibold text-lg text-gray-800 mb-2"><span class="text-xl mr-1">⚡</span> Get More Done</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Boost your productivity. Capture thoughts quickly, stay on top of your workload, and move through tasks with greater efficiency.</p>
+        </div>
+        <div class="feature-card bg-[#f4f6fa] rounded-2xl p-7">
+          <h3 class="font-heading font-semibold text-lg text-gray-800 mb-2"><span class="text-xl mr-1">🔥</span> Work Smart, Not Hard</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Leverage AI for effortless organization. TalkNotes makes it easy to stay productive and efficient without the hassle of manual note-taking.</p>
+        </div>
+        <div class="feature-card bg-[#f4f6fa] rounded-2xl p-7">
+          <h3 class="font-heading font-semibold text-lg text-gray-800 mb-2"><span class="text-xl mr-1">🚀</span> Get Ahead Instead of Left Behind</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Stay competitive in an AI-driven world. Using AI isn't optional — it's essential. Keep pace with modern tools to maintain your edge.</p>
+        </div>
+        <div class="feature-card bg-[#f4f6fa] rounded-2xl p-7">
+          <h3 class="font-heading font-semibold text-lg text-gray-800 mb-2"><span class="text-xl mr-1">📊</span> Stay Organized</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Turn chaos into clarity. With customizable templates and automatic structuring, TalkNotes ensures that every thought and idea is right where you need it.</p>
+        </div>
+        <div class="feature-card bg-[#f4f6fa] rounded-2xl p-7">
+          <h3 class="font-heading font-semibold text-lg text-gray-800 mb-2"><span class="text-xl mr-1">🔍</span> Never Miss a Thing</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Capture every idea, every detail. TalkNotes helps you avoid information overload by keeping all your thoughts organized and accessible whenever you need them.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+          &rarr; Try TalkNotes free for 7 days
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIAL ========== -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="text-gray-600 italic leading-relaxed">"This app has great practical use. Whether you're brainstorming ideas for a book, processing your YouTube video, podcast, or TikTok outloud, this captured all of it and puts it into whatever format you want. SUPER clean and easy to use. The developer has been a great innovator & we're grateful for this service."</p>
+      <p class="text-sm text-gray-400 mt-4">- Rosales, review on Apple App Store</p>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section id="how-it-works" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-gray-400 text-center mb-2">How it works</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-center text-black mb-16">
+        Take Notes in Seconds, Stay Ahead for Hours
+      </h2>
+
+      <div class="max-w-3xl mx-auto space-y-12">
+        <!-- Step 1 -->
+        <div class="flex gap-6 items-start">
+          <div class="step-number bg-primary text-white mt-1">1</div>
+          <div>
+            <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Record with One Button</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Effortlessly capture your thoughts with a single tap. Start recording instantly and let TalkNotes run in the background, so you can stay focused on what matters without interruptions.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="flex gap-6 items-start">
+          <div class="step-number bg-accent text-white mt-1">2</div>
+          <div>
+            <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Select Your Style</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Choose from ready-made styles for meeting notes, task lists, brainstorming sessions, and more. Customize or create your own style to perfectly suit your workflow.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="flex gap-6 items-start">
+          <div class="step-number bg-blue-500 text-white mt-1">3</div>
+          <div>
+            <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Transcribe & Summarize with 99% Accuracy</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Work smarter, not harder. Our AI-powered transcription ensures 99% accuracy, so you can trust that every word is captured correctly, leaving you free to focus on the big picture.</p>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="flex gap-6 items-start">
+          <div class="step-number bg-green-500 text-white mt-1">4</div>
+          <div>
+            <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Edit, then Share & Export Notes Easily</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">Fine-tune your notes and make last-minute edits before sharing them as a URL, email, or message, or exporting to your preferred format. Your insights are always polished, accessible, and ready to use.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-14">
+        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+          &rarr; Try TalkNotes free for 7 days
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row gap-8">
+      <blockquote class="flex-1 text-center md:text-left">
+        <p class="text-gray-600 italic leading-relaxed">"So simple, yet effective. I use Talknotes to write most of our blog posts. I would highly recommend to those looking to up their content game."</p>
+        <p class="text-sm text-gray-400 mt-3">- Elwyn Davies, from Pixelhaze Studio</p>
+      </blockquote>
+      <blockquote class="flex-1 text-center md:text-left">
+        <p class="text-gray-600 italic leading-relaxed">"This is really helpful for taking notes on the fly. The app is user friendly, easy to use, and does exactly as advertised. "</p>
+        <p class="text-sm text-gray-400 mt-3">- Iskandar Chacra, review from Product Hunt</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ========== USE CASES ========== -->
+  <section id="use-cases" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-gray-400 text-center mb-2">Use cases</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-center text-black mb-14">
+        Here is how Talknotes can help you
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-7">
+          <div class="text-3xl mb-4">💡</div>
+          <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Effortless Brainstorming</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Never forget an idea again! Capture your best thoughts while they're fresh, and let our app do the writing for you.</p>
+        </div>
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-7">
+          <div class="text-3xl mb-4">✍️</div>
+          <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Easy Content Creation</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Say goodbye to writer's block! With TalkNotes, you can dictate your thoughts and watch them transform into engaging content in seconds.</p>
+        </div>
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-7">
+          <div class="text-3xl mb-4">📔</div>
+          <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Voice Journaling</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Discover a new way to journal! Express your thoughts, feelings, and memories effortlessly just by recording yourself rambling.</p>
+        </div>
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-7">
+          <div class="text-3xl mb-4">🎤</div>
+          <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Interview Transcription</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Conduct interviews like a pro! TalkNotes provides instant, accurate transcriptions so you can focus on the conversation.</p>
+        </div>
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-7">
+          <div class="text-3xl mb-4">📋</div>
+          <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Meetings Reimagined</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Transform your meetings with TalkNotes! Record, transcribe, and never miss a crucial detail again.</p>
+        </div>
+        <div class="feature-card bg-white border border-gray-100 rounded-2xl p-7">
+          <div class="text-3xl mb-4">🎓</div>
+          <h3 class="font-heading font-medium text-xl text-gray-700 mb-2">Learn faster</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Supercharge your studies with TalkNotes! Convert lectures and study sessions into clear notes and flashcards.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+          &rarr; Try TalkNotes free for 7 days
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIAL ========== -->
+  <section class="bg-gray-50 py-14">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <p class="text-gray-600 italic leading-relaxed">"The quality of the transcriptions is fantastic and require virtually no rework. Compared to incomparably more expensive tools, the results are dimensions better."</p>
+      <p class="text-sm text-gray-400 mt-4">- Thomas Mickeleit, from KommunikationNeuDenken</p>
+    </div>
+  </section>
+
+  <!-- ========== STYLES ========== -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-gray-400 text-center mb-2">Styles</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-center text-black mb-4">
+        +100 premade styles to pick from
+      </h2>
+      <p class="text-center text-gray-500 mb-12 max-w-2xl mx-auto">Boost your productivity with styles for every need. From task lists and meeting notes to full transcripts, TalkNotes helps you turn ideas into action!</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">📝</span>
+            <h4 class="font-heading font-medium text-gray-700">Blog post</h4>
+          </div>
+          <p class="text-xs text-gray-500">Transform voice notes into a structured blog post, with clear headings and paragraphs.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">🎬</span>
+            <h4 class="font-heading font-medium text-gray-700">Video Script</h4>
+          </div>
+          <p class="text-xs text-gray-500">Organize voice notes into a script for videos, ensuring clarity and flow.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">📰</span>
+            <h4 class="font-heading font-medium text-gray-700">Newsletter</h4>
+          </div>
+          <p class="text-xs text-gray-500">Turn voice notes into a newsletter, with a friendly and engaging tone.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">💼</span>
+            <h4 class="font-heading font-medium text-gray-700">LinkedIn Post</h4>
+          </div>
+          <p class="text-xs text-gray-500">Turn voice notes into a LinkedIn post, using emojis and a friendly tone.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">📓</span>
+            <h4 class="font-heading font-medium text-gray-700">Journal</h4>
+          </div>
+          <p class="text-xs text-gray-500">Turn voice notes into a journal entry, adding today's date and maintaining the tone of voice.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">📌</span>
+            <h4 class="font-heading font-medium text-gray-700">Note</h4>
+          </div>
+          <p class="text-xs text-gray-500">Simplify and clarify ideas, keeping only the important points with simple sentences.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">✅</span>
+            <h4 class="font-heading font-medium text-gray-700">Task List</h4>
+          </div>
+          <p class="text-xs text-gray-500">Convert voice notes into a task list, using "-" for tasks without numbers.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">🐦</span>
+            <h4 class="font-heading font-medium text-gray-700">Tweet</h4>
+          </div>
+          <p class="text-xs text-gray-500">Create a short tweet from voice notes, keeping it casual and friendly.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">🎙️</span>
+            <h4 class="font-heading font-medium text-gray-700">Podcast Planner</h4>
+          </div>
+          <p class="text-xs text-gray-500">Organize the main ideas from your voice notes and organize them into multiple podcast outlines.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">🎧</span>
+            <h4 class="font-heading font-medium text-gray-700">Podcast Script</h4>
+          </div>
+          <p class="text-xs text-gray-500">Create detailed scripts for podcast episodes from voice notes, forming a coherent narrative.</p>
+        </div>
+        <div class="style-card bg-gray-50 border border-gray-100 rounded-xl p-5">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-xl">📋</span>
+            <h4 class="font-heading font-medium text-gray-700">Blog post planner</h4>
+          </div>
+          <p class="text-xs text-gray-500">Organize the main ideas in your voice note into multiple blog post outlines.</p>
+        </div>
+      </div>
+
+      <p class="text-center text-sm text-gray-400 mt-6">And more...</p>
+      <p class="text-center text-sm text-gray-400">We add new styles frequently, and you can even create your own!</p>
+
+      <div class="max-w-2xl mx-auto mt-10 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 text-center border border-purple-100">
+        <h3 class="font-heading text-xl font-medium text-gray-700 mb-2">...or create your own!</h3>
+        <p class="text-sm text-gray-500 mb-5">Can't find the perfect style or need something very specific? Give your own instructions for the AI to follow in just a few clicks. Your creativity is the only limit!</p>
+        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-3 rounded-full hover:opacity-90 transition">
+          &rarr; Try TalkNotes free for 7 days
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SHARE & EXPORT ========== -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-gray-400 text-center mb-2">Share & Export</p>
+      <h2 class="font-heading text-3xl sm:text-4xl font-semibold text-center text-black mb-14">
+        Turn your ramblings into actionable notes
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-purple-50 flex items-center justify-center text-primary mb-5">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+          </div>
+          <h3 class="font-heading font-medium text-gray-700 mb-2">Send it to 1000s of other apps</h3>
+          <p class="text-sm text-gray-500">Connect Talknotes to your favorite apps with Zapier or Webhooks! Perfect to automate publishing and workflows!</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 mb-5">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="font-heading font-medium text-gray-700 mb-2">Export in PDF, Text or Markdown</h3>
+          <p class="text-sm text-gray-500">Export your notes in PDF, Text or Markdown to use them in your favorite tools.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto rounded-2xl bg-green-50 flex items-center justify-center text-green-600 mb-5">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+          </div>
+          <h3 class="font-heading font-medium text-gray-700 mb-2">Publish with just a link!</h3>
+          <p class="text-sm text-gray-500">Need to share a note quickly? Make it public and share with the world via a simple link!</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#" class="gradient-cta inline-flex items-center gap-2 text-white font-bold px-8 py-4 rounded-full hover:opacity-90 transition shadow-lg shadow-purple-300/30">
+          &rarr; Try TalkNotes free for 7 days
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="bg-white py-14">
+    <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row gap-8">
+      <blockquote class="flex-1 text-center md:text-left">
+        <p class="text-gray-600 italic leading-relaxed">"Absolutely love Talknotes. I have wrist pain so being able to dictate my writing not only saves me time but relieves my pain! Win win. Highly recommend!"</p>
+        <p class="text-sm text-gray-400 mt-3">- Mike Cardona, from Hidden Levers AI Newsletter</p>
+      </blockquote>
+      <blockquote class="flex-1 text-center md:text-left">
+        <p class="text-gray-600 italic leading-relaxed">"The quality of the transcriptions is fantastic and require virtually no rework. Compared to incomparably more expensive tools, the results are dimensions better."</p>
+        <p class="text-sm text-gray-400 mt-3">- Thomas Mickeleit, from KommunikationNeuDenken</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section id="pricing" class="py-20 bg-[#f0f2fa]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <p class="text-center text-[#9ca3af] text-[30px] font-medium">Pricing</p>
+      <h2 class="font-heading text-center text-[#374151] text-[48px] font-semibold mt-2">
+        Start Your 7 Day Free Trial
+      </h2>
+      <p class="text-center text-[#6b7280] text-[19px] mt-4">
+        Get TalkNotes: <span class="text-[#4db86a] font-semibold">ALL FEATURES</span>
+      </p>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-xl border border-[#e5e7eb] shadow-sm p-6">
+          <h3 class="font-heading text-[36px] font-semibold text-[#111827]">Monthly</h3>
+          <p class="text-[16px] text-[#9ca3af] mt-1">Try 7 days free then $19.97/month</p>
+          <p class="mt-5 text-[56px] font-bold text-black leading-none">$19.97<span class="text-[22px] text-[#9ca3af] font-semibold">/month</span></p>
+          <ul class="mt-6 space-y-2.5 text-[22px] text-[#374151]">
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> iOS and Android app</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Unlimited notes</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> 2h recording</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Upload files</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Custom styles</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Export to text, mail, URL etc</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Store and organize your notes</li>
+          </ul>
+          <a href="#" class="mt-6 flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[27px] font-semibold py-3">
+            <span aria-hidden="true">→</span> Try 7 Days Free
+          </a>
+          <p class="text-center text-[14px] text-[#9ca3af] mt-2">🔒 Secure payment</p>
+        </div>
+
+        <div class="bg-white rounded-xl border-2 border-[#5b5ce6] shadow-sm p-6 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#4f46e5] px-4 py-1 text-[13px] font-semibold text-white">BEST VALUE</div>
+          <h3 class="font-heading text-[36px] font-semibold text-[#111827]">Yearly</h3>
+          <p class="text-[16px] text-[#9ca3af] mt-1">Try 7 days free then $16/month</p>
+          <p class="mt-5 text-[56px] font-bold text-black leading-none">$197<span class="text-[22px] text-[#9ca3af] font-semibold">/year</span></p>
+          <ul class="mt-6 space-y-2.5 text-[22px] text-[#374151]">
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> iOS and Android app</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Unlimited notes</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> 2h recording</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Upload files</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Custom styles</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Export to text, mail, URL etc</li>
+            <li class="flex items-center gap-2"><span class="text-[#40c463]">✓</span> Store and organize your notes</li>
+          </ul>
+          <a href="#" class="mt-6 flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[27px] font-semibold py-3">
+            <span aria-hidden="true">→</span> Try 7 Days Free
+          </a>
+          <p class="text-center text-[14px] text-[#9ca3af] mt-2">🔒 Secure payment</p>
+        </div>
+      </div>
+
+      <p class="mt-5 text-center text-[20px] text-[#4b5563]">
+        Trusted by +10,000 happy users <span class="text-[#f59e0b]">★★★★★</span>
+      </p>
+
+      <div class="mt-6 flex flex-wrap justify-center items-center gap-10 text-[#8b9098]">
+        <span class="text-[48px] font-semibold">◉◉Medium</span>
+        <span class="text-[34px] font-semibold">IH INDIE HACKERS</span>
+        <span class="text-[52px] font-semibold">⫸ Foundr</span>
+        <span class="text-[48px] font-semibold">Scoop.<span class="bg-[#8b9098] text-[#f0f2fa] px-1 rounded-sm">it!</span></span>
+      </div>
+
+      <div class="mt-12 max-w-2xl mx-auto space-y-8">
+        <blockquote class="flex items-start gap-4">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=80&h=80&fit=crop" alt="avatar" class="h-11 w-11 rounded-full object-cover" />
+          <div>
+            <p class="text-[14px] leading-6 text-[#4b5563]">“a perfect tool to work in different ways, if its notes, brainstorming, translation - I love it!”</p>
+            <p class="text-[13px] text-[#9ca3af] mt-1">- Tanja Res, reviewed on Trustpilot</p>
+          </div>
+        </blockquote>
+        <blockquote class="flex items-start gap-4">
+          <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=80&h=80&fit=crop" alt="avatar" class="h-11 w-11 rounded-full object-cover" />
+          <div>
+            <p class="text-[14px] leading-6 text-[#4b5563]">“Been using it for the last 2 months. Super easy. Saves me 5 hours every week minimum.”</p>
+            <p class="text-[13px] text-[#9ca3af] mt-1">- Dan Kulkov, Entrepreneur</p>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section
+    id="faq"
+    class="py-20"
+    style="
+      background-color: #f7f7f8;
+      background-image: radial-gradient(#e6e7eb 0.8px, transparent 0.8px);
+      background-size: 14px 14px;
+    "
+  >
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <h2 class="font-heading text-[34px] font-semibold text-center text-[#4b5563] mb-8">F.A.Q</h2>
+
+      <div class="space-y-3">
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563] group">
+            Is there a mobile app?
+            <i class="bi bi-chevron-down text-[13px] text-[#9ca3af] transition-transform duration-200 ease-out group-hover:text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">Yes, Talknotes is available for both iOS and Android. You can download it from the App Store or Google Play Store.</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            How accurate is the voice-to-text conversion?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">Our state-of-the-art AI technology ensures a high accuracy rate. However, it may vary depending on the clarity of the speech and background noise. You can always edit the text if needed!</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            Can I use TalkNotes in different languages?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">Yes! TalkNotes supports 50+ languages: Afrikaans, Arabic, Armenian, Azerbaijani, Belarusian, Bosnian, Bulgarian, Catalan, Chinese, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, Galician, German, Greek, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Italian, Japanese, Kannada, Kazakh, Korean, Latvian, Lithuanian, Macedonian, Malay, Marathi, Maori, Nepali, Norwegian, Persian, Polish, Portuguese, Romanian, Russian, Serbian, Slovak, Slovenian, Spanish, Swahili, Swedish, Tagalog, Tamil, Thai, Turkish, Ukrainian, Urdu, Vietnamese, and Welsh.</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            Can I upload my own audio files?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">Yes! TalkNotes + gives you the ability to upload your own audio files up to 20 minutes long (or 2 hours with Pro). Perfect if you need to transcript a phone or zoom call.</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            Can I edit the text once it's converted?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">Absolutely! TalkNotes allows you to edit and organize both the content and the transcript. Tailor it to your needs & create content easily.</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            Do I need an internet connection to use TalkNotes?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">Yes, an internet connection is required to utilize the full range of features in TalkNotes.</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            What about privacy?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">Glad you asked! All audio files are deleted after they are transcribed, and we don't train the AI using your notes. Your notes are 100% yours.</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            How can I contact support if I have questions or need help?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">We're here to assist you! Feel free to reach out via live chat or email us at hey@talknotes.io. Your satisfaction is our priority!</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            How can I cancel my subscription?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">You can cancel at any time. There is a link called Manage my subscription in the settings tab which lets you change plans or cancel your plan. You will not be charged anymore after cancelling and you will have access to paid features for the reminder of your subscription period.</p>
+          </div>
+        </div>
+
+        <div class="border border-[#e5e7eb] bg-white rounded-lg shadow-[0_1px_0_rgba(0,0,0,0.02)]">
+          <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-4 py-3.5 text-left text-[13px] font-medium text-[#4b5563]">
+            How long is the discount valid when I subscribe?
+            <i class="bi bi-chevron-down text-[12px] text-[#6b7280]"></i>
+          </button>
+          <div class="faq-content px-4 pb-4">
+            <p class="text-[13px] text-gray-500 leading-relaxed">Discounts show how long they are valid for. We currently offer an introductory first-month discount on the monthly plan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-10 mb-14">
+        <a href="#" class="inline-flex items-center gap-2 bg-gradient-to-r from-[#ff2f96] to-[#8d3dff] text-white text-[14px] font-semibold px-6 py-2.5 rounded-md hover:opacity-95 transition shadow-md">
+          <span aria-hidden="true">&rarr;</span> Try TalkNotes free for 7 days
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER CTA ========== -->
+  <section class="bg-[#f7f7f8] pb-14">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="overflow-hidden rounded-md bg-[#4f46e5] text-white">
+        <div class="grid md:grid-cols-[1fr_44%] items-stretch">
+          <div class="px-6 py-6 md:py-7">
+            <h2 class="font-heading text-[24px] leading-[1.2] font-semibold mb-3 text-[#eef2ff]">
+              Get Ahead with AI-Powered,<br />Actionable Note Taking
+            </h2>
+            <p class="text-[12px] leading-5 text-[#d7dcff] mb-4">
+              Turn your ideas into organized, actionable insights-no manual work required. Capture your thoughts and let TalkNotes transform them into the formats you need to stay productive and on top of your work.
+            </p>
+            <a href="#" class="flex w-full items-center justify-center gap-2 bg-[#ea4f8e] hover:bg-[#e13f83] text-white text-[14px] font-semibold px-5 py-2 rounded-sm transition">
+              <span aria-hidden="true" class="text-[18px] leading-none">⟶</span>
+              Get Talknotes +
+            </a>
+          </div>
+          <div class="hidden p-3 md:block">
+            <img src="./images/faq.jpg" alt="FAQ illustration" class="h-full w-full rounded-sm object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-[#0b1326] text-[#8892a5] py-14 font-heading">
+    <div class="w-full px-6 lg:px-10">
+      <div class="flex flex-col gap-10 lg:flex-row lg:items-start">
+        <div class="lg:w-[280px] lg:shrink-0 lg:self-start">
+          <a href="#" class="mb-4 inline-flex items-center gap-2">
+            <img src="./images/icon.png" alt="TalkNotes icon" class="h-10 w-10 object-contain" />
+            <span class="text-[24px] font-semibold text-white leading-none">TalkNotes</span>
+          </a>
+          <p class="mt-2 text-[14px] leading-6 text-[#73819a]">Turn your thoughts into actionable notes.</p>
+          <p class="mt-4 text-[12px] text-[#5f6b81]">&copy; 2024 - talknotes.io. All rights reserved.</p>
+
+          <div class="mt-5 flex items-center gap-12 text-[#717f98]">
+            <a href="#" aria-label="Twitter" class="hover:text-white transition"><i class="bi bi-twitter-x text-[16px]"></i></a>
+            <a href="#" aria-label="Facebook" class="hover:text-white transition"><i class="bi bi-facebook text-[16px]"></i></a>
+            <a href="#" aria-label="YouTube" class="hover:text-white transition"><i class="bi bi-youtube text-[16px]"></i></a>
+            <a href="#" aria-label="TikTok" class="hover:text-white transition"><i class="bi bi-tiktok text-[16px]"></i></a>
+          </div>
+        </div>
+
+        <div class="lg:ml-auto lg:w-[760px] lg:pr-12">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-20">
+          <div class="w-full">
+            <h4 class="text-[16px] font-medium uppercase tracking-[0.06em] text-white/95">Use Cases</h4>
+            <ul class="mt-4 space-y-3 text-[14px]">
+              <li><a href="#" class="hover:text-white transition">Brainstorming</a></li>
+            </ul>
+
+            <h4 class="mt-6 text-[16px] font-medium uppercase tracking-[0.06em] text-white/95">Links</h4>
+            <ul class="mt-4 space-y-3 text-[14px]">
+              <li><a href="#" class="hover:text-white transition">Reviews</a></li>
+              <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+              <li><a href="#" class="hover:text-white transition">Download</a></li>
+              <li><a href="#" class="hover:text-white transition">Affiliate Program</a></li>
+              <li><a href="#faq" class="hover:text-white transition">F.A.Q</a></li>
+              <li><a href="#" class="hover:text-white transition">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="w-full">
+            <h4 class="text-[16px] font-medium uppercase tracking-[0.06em] text-white/95">Learn</h4>
+            <ul class="mt-4 space-y-3 text-[14px]">
+              <li><a href="#" class="hover:text-white transition">How to transcribe voice memos</a></li>
+              <li><a href="#" class="hover:text-white transition">Brainstorming AI</a></li>
+            </ul>
+
+            <h4 class="mt-6 text-[16px] font-medium uppercase tracking-[0.06em] text-white/95">Free Tools</h4>
+            <ul class="mt-4 space-y-3 text-[14px]">
+              <li><a href="#" class="hover:text-white transition">Voice memo transcription</a></li>
+              <li><a href="#" class="hover:text-white transition">MP3 to text converter</a></li>
+            </ul>
+          </div>
+
+          <div class="w-full">
+            <h4 class="text-[16px] font-medium uppercase tracking-[0.06em] text-white/95">Contacts</h4>
+            <ul class="mt-4 space-y-3 text-[14px]">
+              <li><a href="mailto:support@talknotes.io" class="hover:text-white transition">support@talknotes.io</a></li>
+              <li class="leading-6">100 Commons Rd 7-177<br />Dripping Springs, TX 78620</li>
+            </ul>
+
+            <h4 class="mt-6 text-[16px] font-medium uppercase tracking-[0.06em] text-white/95">Legal</h4>
+            <ul class="mt-4 space-y-3 text-[14px]">
+              <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+              <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+              <li><a href="#" class="hover:text-white transition">Facebook Disclaimer</a></li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('i');
+      const isOpen = content.classList.contains('open');
+
+      document.querySelectorAll('.faq-content.open').forEach(c => {
+        c.classList.remove('open');
+        c.style.maxHeight = '0px';
+      });
+      document.querySelectorAll('#faq button[onclick="toggleFaq(this)"] i').forEach(s => {
+        s.style.transform = '';
+      });
+
+      if (!isOpen) {
+        content.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
